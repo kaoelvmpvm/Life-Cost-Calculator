@@ -410,6 +410,7 @@
 
     <!-- Interactive Class Poll Section (課堂互動投票) -->
     <section id="poll-section" class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 card-shadow space-y-6 no-print">
+      <div id="demo-poll" class="space-y-6">
       <div class="border-b border-slate-800 pb-4 flex items-center justify-between">
         <div>
           <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">Classroom Poll Demo</span>
@@ -477,6 +478,16 @@
       <div class="pt-2 border-t border-slate-700">
         <button id="reset-polls" type="button" class="px-4 py-2 rounded-xl border border-slate-500 hover:bg-slate-800 text-sm">清除本機模擬票數</button>
       </div>
+      </div>
+      <div id="cloud-poll" hidden class="space-y-3">
+        <div>
+          <span class="text-xs font-bold text-rose-600">Classroom Cloud Voting</span>
+          <h3 class="text-xl font-bold mt-1">課堂跨裝置匿名投票</h3>
+          <p class="text-sm text-slate-600 mt-2">輸入教師提供的班級代碼即可參與。教師登入管理端可即時查看班級彙總結果。</p>
+          <p class="text-sm text-slate-500 mt-2">若嵌入頁面無法登入或載入，請使用 <a id="cloud-vote-direct" href="#" target="_blank" rel="noopener noreferrer" class="underline font-bold text-rose-700">獨立投票頁面</a>。</p>
+        </div>
+        <iframe id="cloud-vote-frame" title="Google Apps Script 跨裝置月經平權課堂投票系統" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
     </section>
 
     <!-- Worksheet Notes Area for Printout (學習單紀錄區) -->
@@ -502,5 +513,7 @@
 
   <script src="./js/cost-model.js" defer></script>
   <script src="./js/app.js" defer></script>
+  <script src="./js/cloud-config.js" defer></script>
+  <script src="./js/cloud-embed.js" defer></script>
 </body>
 </html>
