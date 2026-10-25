@@ -247,19 +247,28 @@
     const completed = stages.filter(Boolean).length;
     if ($("progress-text")) $("progress-text").textContent = "探索進度 " + completed + "／6";
     if ($("progress-bar")) $("progress-bar").style.width = (completed / stages.length * 100) + "%";
+    const track = document.querySelector(".progress-track");
+    if (track) track.setAttribute("aria-valuenow", String(completed));
   }
   function setupNotes() {
     const field = $("reflection-note");
     if (!field) return;
     field.value = safeSession.get("lifeCostReflection") || "";
+    const updatePrintNote = () => {
+      const printed = $("print-note");
+      if (printed) printed.textContent = field.value.trim() || "（此處留白，可列印後手寫）";
+    };
+    updatePrintNote();
     field.addEventListener("input", () => {
       safeSession.put("lifeCostReflection", field.value);
+      updatePrintNote();
       updateProgress();
     });
     $("clear-note")?.addEventListener("click", () => {
       if (field.value && !window.confirm("要清除這個分頁的反思筆記嗎？")) return;
       field.value = "";
       safeSession.drop("lifeCostReflection");
+      updatePrintNote();
       updateProgress();
       field.focus();
     });
