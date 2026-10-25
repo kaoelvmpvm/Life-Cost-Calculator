@@ -71,11 +71,12 @@
     }
   </style>
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/design-v2.css">
 </head>
 <body class="font-sans text-slate-800 antialiased min-h-full flex flex-col selection:bg-rose-200 selection:text-rose-900">
 
   <!-- Header Section -->
-  <header class="bg-white/80 backdrop-blur-md border-b border-rose-100 sticky top-0 z-50">
+  <header class="site-header bg-white/80 backdrop-blur-md border-b border-rose-100 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap justify-between items-center gap-4">
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 rounded-2xl bg-rose-500 text-white flex items-center justify-center shadow-md shadow-rose-200">
@@ -105,10 +106,10 @@
   </header>
 
   <!-- Main Content Container -->
-  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+  <main class="page-main flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
 
     <!-- Hero Banner -->
-    <section id="hero-banner" class="gradient-bg rounded-3xl p-6 sm:p-8 border border-rose-200/60 shadow-sm relative overflow-hidden">
+    <section id="hero-banner" class="hero-editorial gradient-bg rounded-3xl p-6 sm:p-8 border border-rose-200/60 shadow-sm relative overflow-hidden">
       <div class="max-w-4xl relative z-10">
         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-rose-200 text-rose-800 mb-3">
           <i class="fa-solid fa-heart-pulse mr-1.5"></i>性別平等與健康護理議題
@@ -119,6 +120,19 @@
         <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
           月經是半數人類無法選擇的自然生理現象。從初潮到停經，漫長的 30 至 40 年間，女性除了承擔生理不適，還需要付出多少不可避免的經濟成本？透過本試算器，讓我們用數字解構月經貧窮與生理平權議題。
         </p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-art__halo"></div>
+        <div class="hero-art__orbit">
+          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="90" cy="90" r="70" stroke="currentColor" stroke-opacity=".22" stroke-width="1.4"/>
+            <circle cx="90" cy="90" r="50" stroke="currentColor" stroke-opacity=".25" stroke-width="1.4" stroke-dasharray="3 8"/>
+            <path d="M90 48C90 48 57 86 57 106a33 33 0 1 0 66 0c0-20-33-58-33-58Z" fill="currentColor" fill-opacity=".13" stroke="currentColor" stroke-width="2"/>
+            <path d="M75 115c2 9 8 14 18 15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="143" cy="37" r="5" fill="currentColor" fill-opacity=".55"/>
+            <circle cx="34" cy="121" r="4" fill="currentColor" fill-opacity=".5"/>
+          </svg>
+        </div>
       </div>
       <div class="learning-path no-print" aria-label="學習流程">
         <span>① 設定與試算</span><span>② 成本分析</span><span>③ 議題思辨</span><span>④ 模擬投票</span><span>⑤ 學習反思</span>
@@ -133,11 +147,12 @@
     </section>
 
     <!-- Calculator Section -->
-    <section id="calculator-section" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <section id="calculator-section" class="calculator-workspace grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
       <!-- Input Controls (Left Side - 7 Cols) -->
-      <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 card-shadow space-y-6">
-        <div class="border-b border-slate-100 pb-4 flex items-center justify-between">
+      <div class="parameter-card lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 card-shadow space-y-6 self-start">
+        <div class="parameter-card__head border-b border-slate-100 pb-4 flex items-center justify-between">
+          <span class="section-index" aria-hidden="true">01 / INPUT</span>
           <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
             <i class="fa-solid fa-sliders text-rose-500"></i> 生理參數與開銷設定
           </h3>
@@ -147,7 +162,7 @@
         </div>
 
         <!-- 1. 年齡與月經週期設定 -->
-        <div class="space-y-4">
+        <div class="parameter-group space-y-4">
           <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">1. 生理歷程與週期</h4>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -174,7 +189,7 @@
         </div>
 
         <!-- 2. 生理用品單價 -->
-        <div class="space-y-4 pt-2 border-t border-slate-100">
+        <div class="parameter-group space-y-4 pt-2 border-t border-slate-100">
           <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">2. 生理用品單價（台幣 NT$）</h4>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -195,10 +210,10 @@
         </div>
 
         <!-- 3. 隱形隨附開銷 (可勾選) -->
-        <div class="space-y-4 pt-2 border-t border-slate-100">
+        <div class="parameter-group parameter-group--extras space-y-4 pt-2 border-t border-slate-100">
           <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">3. 隱形與延伸開銷（每月勾選項目）</h4>
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="expense-options grid grid-cols-1 sm:grid-cols-2 gap-3">
             <label class="flex items-center space-x-3 p-3 rounded-xl border border-slate-100 bg-slate-50 hover:bg-rose-50/50 cursor-pointer transition">
               <input type="checkbox" id="c-painkillers" checked class="w-4 h-4 text-rose-600 rounded focus:ring-rose-500 border-slate-300">
               <div class="flex-grow">
@@ -236,10 +251,10 @@
       </div>
 
       <!-- Results Display (Right Side - 5 Cols) -->
-      <div class="lg:col-span-5 space-y-6">
+      <div class="result-rail lg:col-span-5 space-y-6 self-start">
         
         <!-- Total Cost Highlight Card -->
-        <div class="bg-gradient-to-br from-rose-600 to-rose-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-rose-500/20 relative overflow-hidden">
+        <div class="total-card bg-gradient-to-br from-rose-600 to-rose-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-rose-500/20 relative overflow-hidden">
           <div class="relative z-10 space-y-4">
             <span class="text-xs font-semibold uppercase tracking-wider text-rose-200">生涯總成本估算</span>
             <div>
@@ -265,7 +280,7 @@
           </div>
         </div>
 
-        <div id="comparison-card" class="bg-white rounded-3xl p-6 border border-slate-100 card-shadow space-y-3 no-print">
+        <div id="comparison-card" class="scenario-card bg-white rounded-3xl p-6 border border-slate-100 card-shadow space-y-3 no-print">
           <h4 class="text-base font-bold text-slate-800">情境比較</h4>
           <p class="text-sm text-slate-600">先儲存情境 A，再調整參數儲存情境 B，觀察同一套公式下的差異。</p>
           <div class="grid grid-cols-2 gap-2">
@@ -279,60 +294,56 @@
           <p id="compare-delta" class="font-semibold text-rose-800 text-sm" aria-live="polite"></p>
         </div>
 
-        <!-- Real-world Equivalents (高中生有感換算) -->
-        <div class="bg-white rounded-3xl p-6 border border-slate-100 card-shadow space-y-4">
-          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
-            <span>一生的月經開銷相當於...</span>
-            <i class="fa-solid fa-scale-balanced text-rose-400"></i>
-          </h4>
 
-          <div class="grid grid-cols-2 gap-3">
-            <div class="bg-amber-50/60 p-3.5 rounded-2xl border border-amber-100/60 flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-mug-hot text-lg"></i>
-              </div>
-              <div>
-                <p class="text-[10px] text-amber-700 font-medium">珍珠奶茶 (NT$60)</p>
-                <p class="text-base font-bold text-amber-900"><span id="eq-boba">0</span> 杯</p>
-              </div>
+      </div>
+    </section>
+
+    <!-- Everyday equivalents and cost breakdown — independent row prevents column stretch -->
+    <section id="insight-section" class="insight-layout" aria-label="生活換算與開銷結構">
+      <div class="equivalents-card">
+        <div class="insight-card__header">
+          <span class="section-index" aria-hidden="true">02 / EVERYDAY VALUE</span>
+          <h3 class="insight-card__title">一生的月經開銷相當於...</h3>
+        </div>
+        <div class="equiv-grid">
+          <div class="equiv-card equiv-card--boba">
+            <div class="equiv-card__art" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 13L59 32" stroke="#744D45" stroke-width="5" stroke-linecap="round"/><path d="M57 11L44 35" stroke="#744D45" stroke-width="4.5" stroke-linecap="round"/><path d="M24 33H72L65 81Q48 88 31 81L24 33Z" fill="#D59B6D" stroke="#86574A" stroke-width="3" stroke-linejoin="round"/><path d="M29 48h38l-3 31c-10 4-22 4-32 0l-3-31Z" fill="#EAC29F"/><path d="M21 32c8-11 46-11 54 0" stroke="#86574A" stroke-width="4" stroke-linecap="round"/><path d="M24 34H72" stroke="#86574A" stroke-width="3" stroke-linecap="round"/><circle cx="39" cy="70" r="4.5" fill="#62483E"/><circle cx="51" cy="74" r="4.5" fill="#62483E"/><circle cx="59" cy="65" r="4.5" fill="#62483E"/><path d="M34 43l-2 11" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/></svg></div>
+            <div class="equiv-card__copy">
+              <p class="equiv-card__label">珍珠奶茶 (NT$60)</p>
+              <p class="equiv-card__amount"><span id="eq-boba">0</span> <small>杯</small></p>
             </div>
+          </div>
 
-            <div class="bg-orange-50/60 p-3.5 rounded-2xl border border-orange-100/60 flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-utensils text-lg"></i>
-              </div>
-              <div>
-                <p class="text-[10px] text-orange-700 font-medium">豐盛便當 (NT$110)</p>
-                <p class="text-base font-bold text-orange-900"><span id="eq-bento">0</span> 個</p>
-              </div>
+          <div class="equiv-card equiv-card--bento">
+            <div class="equiv-card__art" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="25" width="76" height="54" rx="15" fill="#A65B43" stroke="#8E4834" stroke-width="3"/><rect x="15" y="28" width="66" height="46" rx="12" fill="#F8E4D3"/><path d="M46 30v42" stroke="#BC7B5F" stroke-width="2"/><path d="M17 53h27" stroke="#BC7B5F" stroke-width="2"/><ellipse cx="31" cy="40" rx="12" ry="9" fill="#fff"/><circle cx="26" cy="38" r="2" fill="#E8E0D1"/><circle cx="36" cy="42" r="2" fill="#E8E0D1"/><path d="M19 59c7-6 14-4 22 1l-1 8H21l-2-9Z" fill="#F4B074"/><path d="M54 38c4-8 16-8 20 0 2 5-4 10-10 10s-12-5-10-10Z" fill="#F8BD63"/><circle cx="63" cy="39" r="5.4" fill="#E88352"/><circle cx="56" cy="60" r="6" fill="#6A9C61"/><circle cx="68" cy="60" r="6" fill="#739F65"/><circle cx="64" cy="54" r="6" fill="#8BB774"/><path d="M10 21l14-9" stroke="#936446" stroke-width="4" stroke-linecap="round"/><path d="M14 27l17-10" stroke="#B58760" stroke-width="4" stroke-linecap="round"/></svg></div>
+            <div class="equiv-card__copy">
+              <p class="equiv-card__label">豐盛便當 (NT$110)</p>
+              <p class="equiv-card__amount"><span id="eq-bento">0</span> <small>個</small></p>
             </div>
+          </div>
 
-            <div class="bg-blue-50/60 p-3.5 rounded-2xl border border-blue-100/60 flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-mobile-screen-button text-lg"></i>
-              </div>
-              <div>
-                <p class="text-[10px] text-blue-700 font-medium">旗艦款 iPhone (NT$3.2萬)</p>
-                <p class="text-base font-bold text-blue-900"><span id="eq-iphone">0</span> 支</p>
-              </div>
+          <div class="equiv-card equiv-card--phone">
+            <div class="equiv-card__art" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="28" y="10" width="43" height="77" rx="11" fill="#33465D" stroke="#233247" stroke-width="3"/><rect x="32" y="15" width="35" height="67" rx="8" fill="#BDD8EC"/><path d="M32 58C44 43 55 63 67 45v29c0 4-3 8-8 8H40c-4 0-8-4-8-8V58Z" fill="#6E93C5"/><path d="M32 40c13-8 20-19 35-9v24c-11 13-25-1-35 3V40Z" fill="#F4B5B9"/><path d="M32 54c13-11 22-7 35 1v10c-13-9-24-8-35 1V54Z" fill="#C782A8"/><rect x="42" y="18" width="16" height="4" rx="2" fill="#233247"/><circle cx="20" cy="30" r="4" fill="#A1C3E3"/><path d="M16 45h7M19.5 41.5v7" stroke="#7696BC" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="equiv-card__copy">
+              <p class="equiv-card__label">旗艦款 iPhone (NT$3.2萬)</p>
+              <p class="equiv-card__amount"><span id="eq-iphone">0</span> <small>支</small></p>
             </div>
+          </div>
 
-            <div class="bg-emerald-50/60 p-3.5 rounded-2xl border border-emerald-100/60 flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
-                <i class="fa-solid fa-plane text-lg"></i>
-              </div>
-              <div>
-                <p class="text-[10px] text-emerald-700 font-medium">日本來回機票 (NT$1.2萬)</p>
-                <p class="text-base font-bold text-emerald-900"><span id="eq-flight">0</span> 趟</p>
-              </div>
+          <div class="equiv-card equiv-card--flight">
+            <div class="equiv-card__art" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 26h60c0 8 3 10 9 11v22c-6 1-9 4-9 11H18c0-7-3-10-9-11V37c6-1 9-4 9-11Z" fill="#D7EEE8" stroke="#397D79" stroke-width="3" stroke-linejoin="round"/><path d="M68 27v43" stroke="#74ADA5" stroke-width="2.5" stroke-dasharray="4 5"/><path d="m25 47 16 4 18-13c2-1 4 1 2 4L47 57l-8 13-5-2 5-13-16-3-5 7-4-1 2-13 4-2 5 4Z" fill="#4C958F" stroke="#397D79" stroke-width="1.5" stroke-linejoin="round"/><path d="M73 40h7M73 47h7M73 54h7" stroke="#397D79" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="equiv-card__copy">
+              <p class="equiv-card__label">日本來回機票 (NT$1.2萬)</p>
+              <p class="equiv-card__amount"><span id="eq-flight">0</span> <small>趟</small></p>
             </div>
           </div>
         </div>
-
+      </div>
+      <div class="insight-analysis">
         <!-- Expense Breakdown Chart -->
-        <div class="bg-white rounded-3xl p-6 border border-slate-100 card-shadow space-y-3">
-          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">開銷結構分析</h4>
-          <div class="h-48 relative flex items-center justify-center">
+        <div class="chart-card bg-white rounded-3xl p-6 border border-slate-100 card-shadow space-y-3">
+          <h4 class="insight-card__title text-xs font-bold text-slate-400 uppercase tracking-wider">開銷結構分析</h4>
+          <div class="chart-visual h-48 relative flex items-center justify-center">
             <canvas id="costChart" role="img" aria-label="衛生棉基本費用與延伸開銷占比圓環圖"></canvas>
               <span id="chart-fallback" hidden class="text-sm text-slate-500">圖表暫不可用，請參考下方文字金額及占比。</span>
           </div>
@@ -351,17 +362,17 @@
     </section>
 
     <!-- Reflection & Discussion Section (課堂引導思辨模組) -->
-    <section id="reflection-section" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 card-shadow space-y-6">
+    <section id="reflection-section" class="reflection-shell bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 card-shadow space-y-6">
       <div class="border-b border-slate-100 pb-4">
         <span class="text-xs font-bold text-rose-500 uppercase tracking-wider">Classroom Discussion</span>
         <h3 class="text-xl font-bold text-slate-900 mt-1">深度議題思辨與卡片討論</h3>
         <p class="text-xs text-slate-500 mt-1">請點擊下方卡片的按鈕展開核心議題與引導思考問題：</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="discussion-grid grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Card 1 -->
-        <div class="border border-rose-100 bg-rose-50/30 rounded-2xl p-5 hover:border-rose-300 transition space-y-3">
+        <div class="discussion-card border border-rose-100 bg-rose-50/30 rounded-2xl p-5 hover:border-rose-300 transition space-y-3">
           <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
             01
           </div>
@@ -376,7 +387,7 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="border border-rose-100 bg-rose-50/30 rounded-2xl p-5 hover:border-rose-300 transition space-y-3">
+        <div class="discussion-card border border-rose-100 bg-rose-50/30 rounded-2xl p-5 hover:border-rose-300 transition space-y-3">
           <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
             02
           </div>
@@ -391,7 +402,7 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="border border-rose-100 bg-rose-50/30 rounded-2xl p-5 hover:border-rose-300 transition space-y-3">
+        <div class="discussion-card border border-rose-100 bg-rose-50/30 rounded-2xl p-5 hover:border-rose-300 transition space-y-3">
           <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
             03
           </div>
@@ -491,7 +502,7 @@
     </section>
 
     <!-- Worksheet Notes Area for Printout (學習單紀錄區) -->
-    <section id="worksheet-section" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 card-shadow space-y-4">
+    <section id="worksheet-section" class="worksheet-shell bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 card-shadow space-y-4">
       <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
         <i class="fa-solid fa-pen-to-square text-rose-500"></i> 課堂學習心得與反思筆記（列印時保留）
       </h3>
