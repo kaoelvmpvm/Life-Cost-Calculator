@@ -1,5 +1,5 @@
-/* 
- * 貼上 Apps Script「部署 → 網頁應用程式」產生的 /exec 網址即可啟用跨裝置投票。
- * 此為公開網頁連結，不是教師管理密語，也不是 Google 試算表的編輯分享網址。
+/*
+ * Google Apps Script 跨裝置投票入口。
+ * 此網址為公開投票應用程式入口，不含教師管理密語。
  */
-window.LIFE_COST_CLOUD_VOTE_URL = "";
+window.LIFE_COST_CLOUD_VOTE_URL = "https://script.google.com/macros/s/AKfycbwwQYPz2wsbVN8C4J2_BaGqpfZj-QakXVdnHOrHp48vvRUfeUXhW2_KvBCiy0J-NXnX/exec";
