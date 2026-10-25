@@ -557,3 +557,139 @@ footer { background:#fffefd !important; border-top:1px solid #f0e6e9 !important;
   #calculator-section .parameter-card, #calculator-section .result-rail { align-self:start !important; }
   .worksheet-shell { margin-top:7px !important; }
 }
+
+
+/* v2.1 — Independent desktop column stacks
+   Solves the visible 160–200px gap beneath the right-side scenario card.
+   Cards no longer wait for the opposite column to end before starting. */
+@media screen and (min-width: 1024px) {
+  #calculator-section.calculator-workspace {
+    display: grid !important;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr) !important;
+    align-items: start !important;
+    gap: 22px !important;
+  }
+  #calculator-section > .workspace-column--inputs {
+    display: flex !important;
+    flex-direction: column;
+    grid-column: 1;
+    gap: 22px;
+    align-self: start !important;
+    min-width: 0;
+    min-height: 0;
+  }
+  #calculator-section > .result-rail {
+    display: flex !important;
+    flex-direction: column;
+    grid-column: 2;
+    gap: 18px;
+    min-width: 0;
+    min-height: 0;
+    align-self: start !important;
+  }
+  .workspace-column > .parameter-card,
+  .workspace-column > .equivalents-card,
+  .result-rail > .total-card,
+  .result-rail > .scenario-card,
+  .result-rail > .insight-analysis {
+    align-self: stretch;
+    width: 100%;
+    min-width: 0;
+    height: auto !important;
+  }
+  .result-rail.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0 !important;
+  }
+  .workspace-column > .equivalents-card {
+    margin-top: 0 !important;
+  }
+}
+
+/* At tablet and mobile widths, use a meaningful reading order:
+   parameters → main result → scenario comparison → illustrated equivalents → analysis.
+   display:contents flattens only nonsemantic div wrappers. */
+@media screen and (max-width: 1023px) {
+  #calculator-section.calculator-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+  }
+  #calculator-section > .workspace-column,
+  #calculator-section > .result-rail {
+    display: contents !important;
+  }
+  #calculator-section .parameter-card { order: 1; width: 100%; }
+  #calculator-section .total-card { order: 2; width: 100%; }
+  #calculator-section .scenario-card { order: 3; width: 100%; }
+  #calculator-section #insight-section { order: 4; width: 100%; }
+  #calculator-section .insight-analysis { order: 5; width: 100%; }
+  #calculator-section .insight-analysis .chart-card { width: 100%; }
+  #calculator-section .result-rail.space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 0 !important; }
+  #calculator-section > .workspace-column,
+  #calculator-section > .result-rail { padding: 0 !important; margin: 0 !important; border: 0 !important; }
+}
+
+/* Print keeps the original A4 two-column hierarchy without the decorative
+   lifestyle-comparison tiles and chart canvas. */
+@media print {
+  #calculator-section.calculator-workspace {
+    display: grid !important;
+    grid-template-columns: 1.05fr .95fr !important;
+    gap: 9px !important;
+    align-items: start !important;
+  }
+  #calculator-section > .workspace-column {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  #calculator-section > .workspace-column > .parameter-card {
+    display: block !important;
+    margin: 0 !important;
+    padding: 5px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+  }
+  #calculator-section #insight-section {
+    display: none !important;
+  }
+  #calculator-section > .result-rail {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  #calculator-section > .result-rail > .total-card {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    padding: 6px !important;
+    box-shadow: none !important;
+  }
+  #calculator-section > .result-rail > .scenario-card,
+  #calculator-section .insight-analysis > .chart-card,
+  #calculator-section .insight-analysis > details {
+    display: none !important;
+  }
+  #calculator-section > .result-rail > .insight-analysis {
+    display: block !important;
+    padding: 0 !important;
+    margin: 7px 0 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  #calculator-section .insight-analysis > .info-panel {
+    display: block !important;
+    padding: 6px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    box-shadow: none !important;
+  }
+}
