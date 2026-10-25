@@ -42,5 +42,5 @@ test("網站保留單機示範並支援配置後嵌入",()=>{
   assert.ok(homepage.includes('./js/cloud-config.js'));
   assert.ok(homepage.includes('./js/cloud-embed.js'));
   assert.doesNotThrow(()=>new Function(embed));
-  assert.match(config,/LIFE_COST_CLOUD_VOTE_URL\s*=\s*""/);
+  assert.match(config,/LIFE_COST_CLOUD_VOTE_URL\s*=\s*"https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec"/);
 });
