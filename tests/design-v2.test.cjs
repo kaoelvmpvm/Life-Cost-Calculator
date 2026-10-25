@@ -22,11 +22,25 @@ test("four distinctive SVG illustrations preserve all existing equivalent result
   for (const label of ["珍珠奶茶 (NT$60)", "豐盛便當 (NT$110)", "旗艦款 iPhone (NT$3.2萬)", "日本來回機票 (NT$1.2萬)"])
     assert.ok(html.includes(label));
 });
-test("cost insights now form a row below the calculator and before classroom discussion", () => {
+test("independent columns position insights below inputs and analysis below scenario", () => {
   const a = html.indexOf('id="calculator-section"');
   const b = html.indexOf('id="insight-section"');
   const c = html.indexOf('id="reflection-section"');
   assert.ok(a >= 0 && a < b && b < c);
+  assert.match(html, /class="workspace-column workspace-column--inputs/);
+  assert.match(html, /class="result-rail lg:col-span-5/);
+  const leftStart = html.indexOf('class="workspace-column workspace-column--inputs');
+  const rightStart = html.indexOf('class="result-rail lg:col-span-5');
+  const left = html.slice(leftStart, rightStart);
+  const right = html.slice(rightStart, c);
+  assert.ok(left.includes('class="parameter-card'), "input column must contain parameter card");
+  assert.ok(left.includes('id="insight-section"'), "illustrated cards follow parameters in the same stack");
+  assert.ok(right.includes('id="comparison-card"'), "result column has comparison");
+  assert.ok(right.indexOf('id="comparison-card"') < right.indexOf('id="costChart"'), "chart follows comparison without waiting for left column");
+  assert.match(css, /min-width:\s*1024px/);
+  assert.match(css, /\.workspace-column--inputs\s*\{/);
+  assert.match(css, /@media screen and \(max-width: 1023px\)/);
+  assert.match(css, /display:\s*contents\s*!important/);
   assert.equal((html.match(/id="costChart"/g) || []).length, 1);
   assert.equal((html.match(/id="breakdown-pads"/g) || []).length, 1);
   assert.equal((html.match(/id="breakdown-extra"/g) || []).length, 1);
