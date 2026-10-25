@@ -15,6 +15,19 @@
 - 反思筆記只暫存於目前瀏覽器分頁，可自行清除；不傳送至伺服器。
 - 列印時以 A4 學習單樣式整理試算設定、結果與反思筆記。
 
+## 跨裝置投票（Google 試算表）
+
+此專案已加入可部署的 **Google Apps Script 後端與課堂匿名投票介面**，使用指定的 Google 試算表儲存場次及投票紀錄。
+
+- 教師建立 6 碼班級代碼、開放／結束場次。
+- 學生不需 Google 登入；相同瀏覽器匿名識別碼每題最多記錄一次。
+- 教師每 10 秒取得各選項的彙總統計，學生個別作答不公開。
+- 不變更原教材題目或試算公式；設定完成前保留原本的單機示範模式。
+- 在 **`js/cloud-config.js`** 填入正式部署的 Apps Script 網頁應用程式網址後，網站會切換為雲端投票。
+- GitHub 專案已包含連至使用者指定試算表的 `apps-script/Code.gs`、`apps-script/VoteApp.html`。
+
+**完整部署操作請閱讀 [Google 試算表投票設定說明](apps-script/SETUP.md)**。此功能尚未經 Google 帳號授權及正式部署，不能視為已在線上啟用。
+
 ## 程式結構
 
 | 路徑 | 功能 |
@@ -24,6 +37,10 @@
 | `js/cost-model.js` | 原教材數值與計算模型 |
 | `js/app.js` | 操作事件、圖表、比較、投票、筆記 |
 | `tests/cost-model.test.cjs` | 核心公式回歸測試 |
+| `apps-script/Code.gs` | Google Sheets 投票資料庫後端 |
+| `apps-script/VoteApp.html` | 跨裝置教師與學生投票頁面 |
+| `js/cloud-config.js` | 雲端投票網址設定 |
+| `js/cloud-embed.js` | GitHub 網站投票模式自動切換 |
 
 ## 測試
 
